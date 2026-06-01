@@ -43,3 +43,56 @@ Only the selected images used in this project are included in the repository.
 ├── README.md
 ├── LICENSE
 └── .gitignore
+```
+## Methods
+
+The project contains a complete mini segmentation workflow:
+
+- manual segmentation in Fiji/ImageJ
+- automatic segmentation in Python
+- Dice score evaluation
+- simple feature extraction from manual and automatic masks
+
+The automatic segmentation uses a classical image processing approach with Gaussian smoothing, RGB channel-based thresholding, Otsu-based background exclusion, morphological operations, and connected component filtering.
+
+## Results
+
+The automatic masks were compared with the manual ground truth masks using the Dice similarity coefficient.
+
+**Mean Dice score:** `0.581 ± 0.175`
+
+This shows a moderate agreement between manual and automatic segmentation. The method worked best for clearly stained and well-separated nuclei, but was less reliable in images with weak contrast, overlapping structures, or many red blood cell edges.
+
+## Feature extraction
+
+For each image, the number of segmented nuclei and the total segmented area were extracted from both manual and automatic masks.
+
+The comparison showed that automatic segmentation sometimes overestimated the number of nuclei and segmented area because red blood cell edges and background artifacts were falsely detected.
+
+## Visual examples
+
+### Segmentation overview
+
+![Segmentation overview](appendix/appendix2.png)
+
+### Nuclei count comparison
+
+![Nuclei count comparison](appendix/appendix3.png)
+
+### Segmented area comparison
+
+![Segmented area comparison](appendix/appendix4.png)
+
+## Result files
+
+The numerical results are stored in the `results/` folder:
+
+- `evaluation_dice_scores.csv`
+- `feature_extraction_results.csv`
+
+## How to run
+
+Open the notebook in Jupyter or VS Code and run all cells:
+
+```text
+notebook/Project_work_CO4_SERNA_SUERER.ipynb
